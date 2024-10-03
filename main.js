@@ -16,10 +16,10 @@ app.use(bodyParser.json());
 
 // Crear un cliente de WhatsApp usando el sistema de autenticación local para manejar sesiones
 const client = new Client({
-  authStrategy: new LocalAuth({
-    // El directorio donde se almacenarán las sesiones
-    clientId: "client-one",
-  }),
+  authStrategy: new LocalAuth({ clientId: "client-one" }),
+  puppeteer: {
+    args: ['--no-sandbox', '--disable-setuid-sandbox']
+  }
 });
 
 // Generar el QR si es necesario para una nueva sesión
